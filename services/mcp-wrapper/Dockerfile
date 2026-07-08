@@ -14,7 +14,7 @@ RUN uv sync
 COPY src ./src
 ENV PYTHONPATH=/app/src
 
-EXPOSE 8004
+EXPOSE 8300
 
 # Config is injected at runtime (env_file / -e); never baked into the image.
-CMD ["uv", "run", "uvicorn", "main:app", "--app-dir", "src", "--host", "0.0.0.0", "--port", "8004"]
+CMD ["uv", "run", "uvicorn", "main:app", "--app-dir", "src", "--host", "0.0.0.0", "--port", "8300"]
