@@ -1,0 +1,14 @@
+[project]
+name = "gmail-mcp-server"
+version = "0.1.0"
+description = "Pulse gmail-mcp-server service (scaffold; wired on Day 2)."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.4",
+]
+
+[tool.uv]
+package = false

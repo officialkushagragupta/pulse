@@ -1,0 +1,35 @@
+# Local-dev orchestrator for tools-service and the Postgres it OWNS.
+# Postgres is NOT a global/shared resource — it belongs to tools-service only.
+services:
+  postgres:
+    image: postgres:16
+    container_name: pulse-tools-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-pulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pulse}
+      POSTGRES_DB: ${POSTGRES_DB:-pulse}
+    ports:
+      - "5432:5432"
+    volumes:
+      - tools_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pulse} -d ${POSTGRES_DB:-pulse}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  tools-service:
+    build: .
+    container_name: pulse-tools-service
+    env_file: .env
+    environment:
+      # Inside the compose network, reach Postgres by service name (not localhost).
+      TOOLS_SERVICE_POSTGRES_DSN: postgresql+psycopg://${POSTGRES_USER:-pulse}:${POSTGRES_PASSWORD:-pulse}@postgres:5432/${POSTGRES_DB:-pulse}
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  tools_pgdata:
