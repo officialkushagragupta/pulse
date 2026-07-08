@@ -26,7 +26,7 @@ services:
       # Inside the compose network, reach Postgres by service name (not localhost).
       TOOLS_SERVICE_POSTGRES_DSN: postgresql+psycopg://${POSTGRES_USER:-pulse}:${POSTGRES_PASSWORD:-pulse}@postgres:5432/${POSTGRES_DB:-pulse}
     ports:
-      - "8001:8001"
+      - "8000:8000"
     depends_on:
       postgres:
         condition: service_healthy
