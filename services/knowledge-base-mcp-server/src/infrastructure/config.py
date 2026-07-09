@@ -14,6 +14,10 @@ class Settings(BaseSettings):
 
     ollama_base_url: str
     embedding_model: str
+    kb_dir: str = "data/kb"
+    index_dir: str = "data/index"
+    chunk_tokens: int = 400  # target section size; oversized sections are sub-split
+    chunk_overlap: int = 40  # token overlap between sub-splits of a large section
     port: int = 8100
     log_level: str = "INFO"  # sourced from KNOWLEDGE_BASE_MCP_SERVER_LOG_LEVEL in .env
 
