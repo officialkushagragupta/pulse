@@ -1,0 +1,905 @@
+[
+{
+"id": 101,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Basic SELECT",
+"question": "Which specific columns list employee join dates in our staff tracking directory?",
+"sql": "SELECT name, join_date FROM employees;",
+"explanation": "Retrieves the name and hiring date for all records in the employees table."
+},
+{
+"id": 102,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find all employees who have been assigned the role of QA Engineer.",
+"sql": "SELECT id, name, email FROM employees WHERE role = 'QA Engineer';",
+"explanation": "Filters the employees table to retrieve rows matching the specific role of QA Engineer."
+},
+{
+"id": 103,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Display all corporate hardware logs where the item status is currently marked as unassigned.",
+"sql": "SELECT id, type, assigned_date FROM assets WHERE status = 'unassigned';",
+"explanation": "Queries the assets tracking table for rows with an unassigned operational status status."
+},
+{
+"id": 104,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Identify all active projects that possess a completely null end date record.",
+"sql": "SELECT id, name, start_date FROM projects WHERE end_date IS NULL;",
+"explanation": "Filters the projects tracking table to isolate rows where the end_date field is empty."
+},
+{
+"id": 105,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "ORDER BY + LIMIT",
+"question": "List the three earliest client orders stored based on their recorded order dates.",
+"sql": "SELECT id, customer_id, amount, order_date FROM orders ORDER BY order_date ASC LIMIT 3;",
+"explanation": "Sorts the orders dataset chronologically by date and yields the first three records."
+},
+{
+"id": 106,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Calculate the average individual transaction amount recorded across all client orders.",
+"sql": "SELECT AVG(amount) AS average_order_amount FROM orders;",
+"explanation": "Applies the AVG aggregate function to determine the mean numeric value of the amount column."
+},
+{
+"id": 107,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Retrieve leave logs that track used sick days where the usage is greater than 5 days.",
+"sql": "SELECT id, emp_id, remaining FROM leaves WHERE type = 'sick' AND used > 5;",
+"explanation": "Filters the leaves schema table on matching sick categories with used counts above five."
+},
+{
+"id": 108,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find all customer enterprise entities operating specifically out of the 'LATAM' region.",
+"sql": "SELECT id, name, segment FROM customers WHERE region = 'LATAM';",
+"explanation": "Selects rows from the customers table where the region value explicitly matches LATAM."
+},
+{
+"id": 109,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "How many corporate tasks are currently recorded across all sprint tracking logs?",
+"sql": "SELECT COUNT(id) AS total_tasks FROM jira_tickets WHERE type = 'task';",
+"explanation": "Counts total rows matching the task category restriction inside the jira_tickets table."
+},
+{
+"id": 110,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "Basic SELECT + WHERE",
+"question": "Identify any corporate asset tracking entry linked specifically to a vpn connection.",
+"sql": "SELECT id, emp_id, status FROM assets WHERE type = 'vpn';",
+"explanation": "Queries infrastructure tracking assets filtering exclusively on matching vpn entries."
+},
+{
+"id": 111,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Which projects have a current tracking status column marked as 'suspended'?",
+"sql": "SELECT id, name, start_date FROM projects WHERE status = 'suspended';",
+"explanation": "Queries the projects table to identify rows that match a suspended status criterion."
+},
+{
+"id": 112,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find all leave profiles where the remaining allocation exceeds 20 full working days.",
+"sql": "SELECT id, emp_id, type FROM leaves WHERE remaining > 20;",
+"explanation": "Filters the leaves profile index isolating any bucket where remaining balances exceed twenty."
+},
+{
+"id": 113,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "List orders that have been officially logged with a status value of 'cancelled'.",
+"sql": "SELECT id, customer_id, amount FROM orders WHERE status = 'cancelled';",
+"explanation": "Extracts rows from the orders table containing a status value matching cancelled."
+},
+{
+"id": 114,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Display a list of Jira tickets currently flagged as 'low' priority.",
+"sql": "SELECT id, key, type, status FROM jira_tickets WHERE priority = 'low';",
+"explanation": "Filters the jira_tickets table targeting rows labeled with a low priority property."
+},
+{
+"id": 115,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "What is the lowest value of remaining leave tracked anywhere in the system?",
+"sql": "SELECT MIN(remaining) AS minimum_remaining_leaves FROM leaves;",
+"explanation": "Finds the lowest absolute numerical scalar inside the remaining column of the leaves catalog."
+},
+{
+"id": 116,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Basic SELECT",
+"question": "Summarize all distinct target geographical regions listed across active client accounts.",
+"sql": "SELECT DISTINCT region FROM customers;",
+"explanation": "Selects the unique set of text strings recorded in the region column of the customers table."
+},
+{
+"id": 117,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "ORDER BY + LIMIT",
+"question": "Display the four most recently assigned asset records using their deployment dates.",
+"sql": "SELECT id, emp_id, type, assigned_date FROM assets WHERE assigned_date IS NOT NULL ORDER BY assigned_date DESC LIMIT 4;",
+"explanation": "Orders hardware data reverse-chronologically by assignment date and limits the output rows to four."
+},
+{
+"id": 118,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find all Jira tracking entries mapped directly to 'Sprint 100'.",
+"sql": "SELECT id, key, type, status FROM jira_tickets WHERE sprint = 'Sprint 100';",
+"explanation": "Filters the jira_tickets project database on rows matching the Sprint 100 timeline string."
+},
+{
+"id": 119,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Determine the highest transaction amount logged across any single closed sales event.",
+"sql": "SELECT MAX(amount) AS highest_sales_amount FROM sales;",
+"explanation": "Determines the highest scalar value stored in the amount column of the sales table."
+},
+{
+"id": 120,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Date filter",
+"question": "Identify employee records indicating a precise start date matching '2026-03-01'.",
+"sql": "SELECT id, name, role FROM employees WHERE join_date = '2026-03-01';",
+"explanation": "Filters the employees record matrix on join_date matching a literal date parameter value."
+},
+{
+"id": 121,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Basic SELECT",
+"question": "Retrieve all email addresses stored within our enterprise staff directory.",
+"sql": "SELECT email FROM employees;",
+"explanation": "Selects every entry listed in the email column from the employees tracking table."
+},
+{
+"id": 122,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find any employee whose listed role string matches 'Intern'.",
+"sql": "SELECT id, name, dept_id FROM employees WHERE role = 'Intern';",
+"explanation": "Filters employee directory rows where the role string column evaluates precisely to Intern."
+},
+{
+"id": 123,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Display asset logs where the item type is tracked specifically as a phone.",
+"sql": "SELECT id, emp_id, status FROM assets WHERE type = 'phone';",
+"explanation": "Extracts asset rows where the hardware type classification column equals phone."
+},
+{
+"id": 124,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Identify Jira tickets that are categorized under the type label of 'feature'.",
+"sql": "SELECT id, key, priority, status FROM jira_tickets WHERE type = 'feature';",
+"explanation": "Restricts rows from the jira_tickets data frame to elements holding a feature type."
+},
+{
+"id": 125,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "ORDER BY + LIMIT",
+"question": "Show the five lowest distinct order totals currently tracked inside our purchasing log.",
+"sql": "SELECT id, customer_id, amount FROM orders ORDER BY amount ASC LIMIT 5;",
+"explanation": "Orders customer transactions ascending by price metrics and exposes the first five rows."
+}
+][
+{
+"id": 126,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Count how many unique client accounts exist inside the 'SMB' segment.",
+"sql": "SELECT COUNT(id) AS smb_customer_count FROM customers WHERE segment = 'SMB';",
+"explanation": "Counts rows within the customers registry that match an explicit SMB segment filter."
+},
+{
+"id": 127,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find any leave balances tracked for the specific category label of 'earned'.",
+"sql": "SELECT id, emp_id, remaining FROM leaves WHERE type = 'earned';",
+"explanation": "Isolates tracking columns from the leaves database filtering for the earned text variable."
+},
+{
+"id": 128,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Which corporate customer profiles belong to the 'North America' region block?",
+"sql": "SELECT id, name, segment FROM customers WHERE region = 'North America';",
+"explanation": "Filters rows inside the customer account index based on matching North America region attributes."
+},
+{
+"id": 129,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "How many total project tracking entries are currently marked with a status of 'completed'?",
+"sql": "SELECT COUNT(id) AS finished_project_count FROM projects WHERE status = 'completed';",
+"explanation": "Counts the number of entries in the projects directory that match a completed status label."
+},
+{
+"id": 130,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "Basic SELECT + WHERE",
+"question": "Identify active equipment files whose tracking status equals 'stolen'.",
+"sql": "SELECT id, emp_id, type FROM assets WHERE status = 'stolen';",
+"explanation": "Filters the corporate hardware asset catalog on a status match with the text string stolen."
+},
+{
+"id": 131,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "ORDER BY",
+"question": "List all tracked projects sorted linearly by their assigned ending dates.",
+"sql": "SELECT id, name, end_date FROM projects ORDER BY end_date ASC;",
+"explanation": "Retrieves the projects framework rows sorted chronologically from earliest to latest end date."
+},
+{
+"id": 132,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find any leave entry where the total allocated bucket size is exactly 15 days.",
+"sql": "SELECT id, emp_id, type FROM leaves WHERE total = 15;",
+"explanation": "Filters rows inside the leaves structural table where the total column equals fifteen."
+},
+{
+"id": 133,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Which active client orders reflect an exact numeric financial volume of 0?",
+"sql": "SELECT id, customer_id FROM orders WHERE amount = 0;",
+"explanation": "Queries the orders transactional database isolating rows containing an amount value of zero."
+},
+{
+"id": 134,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Retrieve all Jira items that are categorized under the tracking priority label of 'critical'.",
+"sql": "SELECT id, key, status FROM jira_tickets WHERE priority = 'critical';",
+"explanation": "Filters rows from the jira_tickets matrix where the priority column equals critical."
+},
+{
+"id": 135,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Calculate the average quantity of casual leave days used across our staff directory.",
+"sql": "SELECT AVG(used) AS avg_casual_used FROM leaves WHERE type = 'casual';",
+"explanation": "Evaluates the average value of the used column inside leaves for casual records."
+},
+{
+"id": 136,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Basic SELECT",
+"question": "Display all distinctive business department names stored in our core directory.",
+"sql": "SELECT name FROM departments;",
+"explanation": "Retrieves the complete list of corporate division labels from the departments metadata table."
+},
+{
+"id": 137,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "ORDER BY + LIMIT",
+"question": "Display the first two individual assets added to the registry based on chronological asset ID keys.",
+"sql": "SELECT id, type, status FROM assets ORDER BY id ASC LIMIT 2;",
+"explanation": "Sorts the assets catalog sequentially by primary ID keys, returning the first two rows."
+},
+{
+"id": 138,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find any Jira tickets that are explicitly assigned to staff ID member 88.",
+"sql": "SELECT id, key, type, status FROM jira_tickets WHERE assignee_id = 88;",
+"explanation": "Filters rows in the jira_tickets tracking model matching a specific foreign key assignee ID."
+},
+{
+"id": 139,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Count how many historical transactional rows are saved within our sales table.",
+"sql": "SELECT COUNT(id) AS sales_row_count FROM sales;",
+"explanation": "Executes a global row count operation on the primary sales ledger database table."
+},
+{
+"id": 140,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Date filter",
+"question": "Identify staff members whose recorded start date fell precisely on '2024-11-15'.",
+"sql": "SELECT id, name FROM employees WHERE join_date = '2024-11-15';",
+"explanation": "Queries the staff registry filtering rows on a specific literal chronological join date value."
+},
+{
+"id": 141,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "Basic SELECT",
+"question": "Extract a simple index list of all active employee names recorded in the system.",
+"sql": "SELECT name FROM employees;",
+"explanation": "Selects the name column attribute across all rows within the core employees catalog."
+},
+{
+"id": 142,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Isolate all personnel entries assigned to department code number 3.",
+"sql": "SELECT id, name, role FROM employees WHERE dept_id = 3;",
+"explanation": "Filters the primary employee database utilizing an exact matching criteria on the dept_id attribute."
+},
+{
+"id": 143,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Find hardware records where the tracking status is currently listed as 'damaged'.",
+"sql": "SELECT id, emp_id, type FROM assets WHERE status = 'damaged';",
+"explanation": "Filters the assets schema table targeting components holding a status flag equal to damaged."
+},
+{
+"id": 144,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Identify tracking keys for tickets currently saved with a status of 'Code Review'.",
+"sql": "SELECT id, key, type FROM jira_tickets WHERE status = 'Code Review';",
+"explanation": "Queries the jira_tickets dataset applying a string-matching condition against the status column."
+},
+{
+"id": 145,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "ORDER BY + LIMIT",
+"question": "Expose the single highest transaction amount documented within our customer orders index.",
+"sql": "SELECT id, amount FROM orders ORDER BY amount DESC LIMIT 1;",
+"explanation": "Sorts the orders volume downward and crops the output view to the first top row."
+},
+{
+"id": 146,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Determine total aggregate order values filed across the historical month string '2026-02'.",
+"sql": "SELECT SUM(amount) AS monthly_revenue_total FROM sales WHERE month = '2026-02';",
+"explanation": "Calculates the sum total of amount properties matching a specific target month text variable."
+},
+{
+"id": 147,
+"domain": "HR",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "Identify any leave log reporting remaining vacation balances less than zero.",
+"sql": "SELECT id, emp_id, type FROM leaves WHERE remaining < 0;",
+"explanation": "Queries the leaves matrix for anomalous tracking records showing negative balances."
+},
+{
+"id": 148,
+"domain": "Analytics",
+"difficulty": "Easy",
+"pattern": "WHERE filter",
+"question": "List out all customer profiles tracked inside the 'Enterprise' industry tier.",
+"sql": "SELECT id, name, region FROM customers WHERE segment = 'Enterprise';",
+"explanation": "Filters rows inside the customer account directory by matching the Enterprise segment property."
+},
+{
+"id": 149,
+"domain": "Engineering",
+"difficulty": "Easy",
+"pattern": "Aggregate query",
+"question": "Count total tracking items inside the ticketing ledger marked as a 'bug'.",
+"sql": "SELECT COUNT(id) AS bug_count FROM jira_tickets WHERE type = 'bug';",
+"explanation": "Calculates row totals from the jira_tickets matrix matching structural bug types."
+},
+{
+"id": 150,
+"domain": "IT",
+"difficulty": "Easy",
+"pattern": "Basic SELECT + WHERE",
+"question": "Find asset rows tracking an active corporate hardware deployment labeled as a 'laptop'.",
+"sql": "SELECT id, emp_id FROM assets WHERE type = 'laptop' AND status = 'active';",
+"explanation": "Queries tracking datasets filtering rows for combined active and laptop matching conditions."
+}
+][
+{
+"id": 151,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "JOIN (2 tables)",
+"question": "Retrieve a list of employees alongside the remaining leave metrics assigned to them.",
+"sql": "SELECT e.name, l.type, l.remaining FROM employees e JOIN leaves l ON e.id = l.emp_id;",
+"explanation": "Performs an inner join matching personnel directory rows with individual leave balance indexes."
+},
+{
+"id": 152,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Calculate the cumulative total number of used leave days logged across different organizational roles.",
+"sql": "SELECT e.role, SUM(l.used) AS total_used_leaves FROM employees e JOIN leaves l ON e.id = l.emp_id GROUP BY e.role;",
+"explanation": "Joins employees to leaves, grouping structural outputs by role strings to calculate sum aggregates."
+},
+{
+"id": 153,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Expose the names and office emails of personnel working within the 'Finance' department.",
+"sql": "SELECT e.name, e.email FROM employees e JOIN departments d ON e.dept_id = d.id WHERE d.name = 'Finance';",
+"explanation": "Connects staffing data frames against the department schema table filtering explicitly on title fields."
+},
+{
+"id": 154,
+"domain": "IT",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Provide a breakdown showing the distribution of infrastructure asset counts among working staff profiles.",
+"sql": "SELECT e.name, COUNT(a.id) AS equipment_count FROM employees e LEFT JOIN assets a ON e.id = a.emp_id GROUP BY e.id, e.name;",
+"explanation": "Employs an outer left join pattern to associate staff names with hardware count tracking metrics."
+},
+{
+"id": 155,
+"domain": "IT",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Find the names of all system personnel who are currently assigned a corporate phone configuration.",
+"sql": "SELECT e.name FROM employees e JOIN assets a ON e.id = a.emp_id WHERE a.type = 'phone';",
+"explanation": "Links personnel directories with tracking logs filtering on target hardware items matching phone."
+},
+{
+"id": 156,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Display key references for all blocked Jira items currently assigned to a 'Senior Engineer'.",
+"sql": "SELECT j.key, j.type FROM jira_tickets j JOIN employees e ON j.assignee_id = e.id WHERE e.role = 'Senior Engineer' AND j.is_blocked = true;",
+"explanation": "Joins work item tables to human resources databases filtering on targeted roles and block variables."
+},
+{
+"id": 157,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Compute the total count of resolved 'Done' ticketing entries handled by individual software developers.",
+"sql": "SELECT e.name, COUNT(j.id) AS completed_tickets FROM employees e JOIN jira_tickets j ON e.id = j.assignee_id WHERE j.status = 'Done' GROUP BY e.id, e.name;",
+"explanation": "Groups ticket lifecycle states against individual task assignees using inner relationship join paths."
+},
+{
+"id": 158,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "JOIN (2 tables)",
+"question": "Retrieve corporate sales metrics along with the specific ordering dates matching those ledger points.",
+"sql": "SELECT s.id, s.amount, o.order_date FROM sales s JOIN orders o ON s.order_id = o.id; ",
+"explanation": "Executes direct inner joins linking primary operational transaction sheets to core tracking orders."
+},
+{
+"id": 159,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Determine the sum total financial volume generated by individual client accounts across records.",
+"sql": "SELECT c.name, SUM(o.amount) AS client_gross_spend FROM customers c JOIN orders o ON c.id = o.customer_id GROUP BY c.id, c.name;",
+"explanation": "Groups customer entities while computing total gross metrics derived from core transaction tables."
+},
+{
+"id": 160,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Identify transaction metrics managed by staff members whose role designation equals 'Account Executive'.",
+"sql": "SELECT s.id, s.amount, e.name FROM sales s JOIN employees e ON s.emp_id = e.id WHERE e.role = 'Account Executive';",
+"explanation": "Binds internal sales data matrices to corporate role descriptions via inner staff key bridges."
+},
+{
+"id": 161,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Count total active project tracking components mapped to the 'Engineering' department name.",
+"sql": "SELECT d.name, COUNT(p.id) AS program_count FROM departments d JOIN projects p ON d.id = p.dept_id WHERE d.name = 'Engineering' GROUP BY d.id, d.name;",
+"explanation": "Links corporate divisions directly to program tracking rows filtering for engineering department blocks."
+},
+{
+"id": 162,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "Date Function",
+"question": "Identify all staff personnel whose corporate join dates occur after the turn of the year '2026-01-01'.",
+"sql": "SELECT id, name, join_date FROM employees WHERE join_date >= '2026-01-01';",
+"explanation": "Applies a greater than or equal chronological predicate statement targeting recently hired workers."
+},
+{
+"id": 163,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "Which employees show an aggregate used leave profile exceeding 30 days across all sub-buckets?",
+"sql": "SELECT e.name, SUM(l.used) AS aggregated_used FROM employees e JOIN leaves l ON e.id = l.emp_id GROUP BY e.id, e.name HAVING SUM(l.used) > 30;",
+"explanation": "Aggregates historical time-off logs across personal profiles filtering totals via a HAVING statement."
+},
+{
+"id": 164,
+"domain": "IT",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Compute the sum volume of active hardware configurations broken down by employee role types.",
+"sql": "SELECT e.role, COUNT(a.id) AS hardware_volume FROM employees e JOIN assets a ON e.id = a.emp_id WHERE a.status = 'active' GROUP BY e.role;",
+"explanation": "Groups inventory allocations across organizational job classifications to balance gear distribution."
+},
+{
+"id": 165,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Find the project titles linked explicitly to department code designation number 1.",
+"sql": "SELECT name FROM projects WHERE dept_id = 1;",
+"explanation": "Queries the internal project registry tracking list using a direct numerical division filter."
+},
+{
+"id": 166,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "Identify customer records that have yielded an aggregate completed ordering transaction volume over 25,000.",
+"sql": "SELECT c.name, SUM(o.amount) AS transaction_total FROM customers c JOIN orders o ON c.id = o.customer_id WHERE o.status = 'completed' GROUP BY c.id, c.name HAVING SUM(o.amount) > 25000;",
+"explanation": "Joins client rows to system ordering transactions filtering aggregate financials via HAVING blocks."
+},
+{
+"id": 167,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY + ORDER BY",
+"question": "List global regions ordered from highest to lowest customer account concentrations.",
+"sql": "SELECT region, COUNT(id) AS account_volume FROM customers GROUP BY region ORDER BY account_volume DESC;",
+"explanation": "Groups accounts by territory flags, sorting the resulting matrix rows downwards on density scores."
+},
+{
+"id": 168,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Display all task-type Jira items currently remaining in an 'Open' tracking phase.",
+"sql": "SELECT id, key, priority FROM jira_tickets WHERE type = 'task' AND status = 'Open';",
+"explanation": "Filters active system project tracking ledgers on combined item type and lifecycle status conditions."
+},
+{
+"id": 169,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "Date Arithmetic",
+"question": "Calculate which personnel have spent exactly less than 180 days with the enterprise relative to '2026-06-01'.",
+"sql": "SELECT id, name, join_date FROM employees WHERE join_date > CAST('2026-06-01' AS DATE) - INTERVAL '180 days';",
+"explanation": "Utilizes standard date interval math constraints to find new team member profiles."
+},
+{
+"id": 170,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Find all processing orders linked to accounts categorized within the 'APAC' territory field.",
+"sql": "SELECT o.id, o.amount, c.name FROM orders o JOIN customers c ON o.customer_id = c.id WHERE c.region = 'APAC';",
+"explanation": "Connects client tracking ledgers with direct ordering sheets to restrict outputs to APAC accounts."
+},
+{
+"id": 171,
+"domain": "IT",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Which personnel entries were issued a corporate vpn connection after the date '2025-08-01'?",
+"sql": "SELECT e.name, a.assigned_date FROM employees e JOIN assets a ON e.id = a.emp_id WHERE a.type = 'vpn' AND a.assigned_date > '2025-08-01';",
+"explanation": "Binds internal IT assets data maps to staff profiles checking explicit deployment timelines."
+},
+{
+"id": 172,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "JOIN + GROUP BY",
+"question": "Determine the breakdown of total blocked ticketing counts grouped across unique tracking priorities.",
+"sql": "SELECT priority, COUNT(id) AS blocked_count FROM jira_tickets WHERE is_blocked = true GROUP BY priority;",
+"explanation": "Groups records in the jira_tickets structural index on matching priority strings under blocked constraints."
+},
+{
+"id": 173,
+"domain": "Analytics",
+"difficulty": "Medium",
+"pattern": "GROUP BY + HAVING",
+"question": "Identify which system sales representatives booked more than 5 individual transaction events.",
+"sql": "SELECT emp_id, COUNT(id) AS transaction_count FROM sales GROUP BY emp_id HAVING COUNT(id) > 5;",
+"explanation": "Groups transactional metrics in the sales table by rep ID, filtering via an aggregation threshold count."
+},
+{
+"id": 174,
+"domain": "Engineering",
+"difficulty": "Medium",
+"pattern": "Date Filter",
+"question": "Find any tracked system program scheduled to kick off after the initial opening day of June 2026.",
+"sql": "SELECT id, name, start_date FROM projects WHERE start_date > '2026-06-01';",
+"explanation": "Applies a chronological greater-than parameter constraint against the project start matrix."
+},
+{
+"id": 175,
+"domain": "HR",
+"difficulty": "Medium",
+"pattern": "JOIN + WHERE",
+"question": "Retrieve corporate profiles for personnel working under executive manager code reference number 5.",
+"sql": "SELECT id, name, email FROM employees WHERE manager_id = 5;",
+"explanation": "Queries corporate directories directly filtering on parent hierarchy foreign key values."
+}
+][
+{
+"id": 176,
+"domain": "HR",
+"difficulty": "Hard",
+"pattern": "Recursive JOIN / Self JOIN",
+"question": "Produce a report listing employee identities alongside the tracking profile name of their manager's supervisor.",
+"sql": "SELECT e.name AS staff_name, m2.name AS grand_manager_name FROM employees e JOIN employees m1 ON e.manager_id = m1.id LEFT JOIN employees m2 ON m1.manager_id = m2.id;",
+"explanation": "Executes a multi-tier self-join configuration to walk two levels up the human resources management hierarchy chain."
+},
+{
+"id": 177,
+"domain": "HR",
+"difficulty": "Hard",
+"pattern": "CTE + Window Function",
+"question": "Identify who the newest hire was inside each individual corporate department framework.",
+"sql": "WITH recent_staff AS (SELECT name, dept_id, join_date, ROW_NUMBER() OVER(PARTITION BY dept_id ORDER BY join_date DESC) AS internal_rank FROM employees) SELECT name, dept_id, join_date FROM recent_staff WHERE internal_rank = 1;",
+"explanation": "Combines Common Table Expressions with a partition ROW_NUMBER filter to isolate the latest hire across department IDs."
+},
+{
+"id": 178,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "CTE + JOIN + GROUP BY",
+"question": "Find customer companies whose total order volumes are higher than the top single transaction value seen in the EMEA region.",
+"sql": "WITH emea_max AS (SELECT MAX(o.amount) AS ceiling_value FROM orders o JOIN customers c ON o.customer_id = c.id WHERE c.region = 'EMEA') SELECT c.name, SUM(o.amount) AS client_aggregate FROM customers c JOIN orders o ON c.id = o.customer_id GROUP BY c.id, c.name HAVING SUM(o.amount) > (SELECT ceiling_value FROM emea_max);",
+"explanation": "Calculates regional baselines within a nested lookup CTE before performing cross-table valuation tests."
+},
+{
+"id": 179,
+"domain": "Engineering",
+"difficulty": "Hard",
+"pattern": "Subquery + JOIN + GROUP BY",
+"question": "List developers managing a larger load of active tickets than the average ticket allocation across engineering.",
+"sql": "SELECT e.name, COUNT(j.id) AS load_count FROM employees e JOIN jira_tickets j ON e.id = j.assignee_id WHERE j.status != 'Done' GROUP BY e.id, e.name HAVING COUNT(j.id) > (SELECT COUNT(id)::float / COUNT(DISTINCT assignee_id) FROM jira_tickets WHERE status != 'Done');",
+"explanation": "Filters personnel rosters based on matching aggregate loads against nested subqueries deriving structural averages."
+},
+{
+"id": 180,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "Window Function + JOIN",
+"question": "Rank all client orders recorded inside each operational customer segment based on transaction size.",
+"sql": "SELECT c.segment, o.id, o.amount, DENSE_RANK() OVER (PARTITION BY c.segment ORDER BY o.amount DESC) AS segment_financial_rank FROM orders o JOIN customers c ON o.customer_id = c.id;",
+"explanation": "Executes a DENSE_RANK window partition over client business categories to rank individual transactions."
+},
+{
+"id": 181,
+"domain": "HR",
+"difficulty": "Hard",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "Expose corporate divisions where the cumulative total of remaining leave days across staff is less than 50 days.",
+"sql": "SELECT d.name, SUM(l.remaining) AS collective_balance FROM departments d JOIN employees e ON d.id = e.dept_id JOIN leaves l ON e.id = l.emp_id GROUP BY d.id, d.name HAVING SUM(l.remaining) < 50;",
+"explanation": "Merges data records across three structural matrices to catch teams tracking low coverage capacities."
+},
+{
+"id": 182,
+"domain": "IT",
+"difficulty": "Hard",
+"pattern": "CASE + JOIN + GROUP BY",
+"question": "Provide a matrix displaying total counts of laptops versus phones deployed across company divisions.",
+"sql": "SELECT d.name, SUM(CASE WHEN a.type = 'laptop' THEN 1 ELSE 0 END) AS laptop_total, SUM(CASE WHEN a.type = 'phone' THEN 1 ELSE 0 END) AS phone_total FROM departments d JOIN employees e ON d.id = e.dept_id JOIN assets a ON e.id = a.emp_id GROUP BY d.id, d.name;",
+"explanation": "Embeds logical CASE structures inside standard sum expressions to form a tracking grid across infrastructure endpoints."
+},
+{
+"id": 183,
+"domain": "Engineering",
+"difficulty": "Hard",
+"pattern": "CTE + JOIN + GROUP BY",
+"question": "Find which software project timelines reflect tracking loads where bugs exceed standard tasks.",
+"sql": "WITH bug_ratios AS (SELECT assignee_id, SUM(CASE WHEN type = 'bug' THEN 1 ELSE 0 END) AS bug_vol, SUM(CASE WHEN type = 'task' THEN 1 ELSE 0 END) AS task_vol FROM jira_tickets GROUP BY assignee_id) SELECT p.name FROM projects p JOIN departments d ON p.dept_id = d.id JOIN employees e ON d.id = e.dept_id JOIN bug_ratios br ON e.id = br.assignee_id GROUP BY p.id, p.name HAVING SUM(br.bug_vol) > SUM(br.task_vol);",
+"explanation": "Compiles categorical task densities in an isolated CTE table before evaluating core program risk dimensions."
+},
+{
+"id": 184,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "Subquery + JOIN + GROUP BY",
+"question": "Find the names of sales specialists who never logged transactions during peak sales months where volume surpassed 100,000.",
+"sql": "SELECT DISTINCT e.name FROM employees e WHERE e.id NOT IN (SELECT DISTINCT emp_id FROM sales WHERE month IN (SELECT month FROM sales GROUP BY month HAVING SUM(amount) > 100000));",
+"explanation": "Nests layered subqueries evaluating negative logic criteria to isolate workforce performance variance loops."
+},
+{
+"id": 185,
+"domain": "HR",
+"difficulty": "Hard",
+"pattern": "Self JOIN + WHERE",
+"question": "Identify any corporate staff pairs who share the same department and matching hiring date.",
+"sql": "SELECT e1.name AS staff_member_a, e2.name AS staff_member_b, e1.dept_id, e1.join_date FROM employees e1 JOIN employees e2 ON e1.dept_id = e2.dept_id AND e1.join_date = e2.join_date AND e1.id < e2.id;",
+"explanation": "Performs an inequality self-join operation to extract identical alignment indicators without duplication."
+},
+{
+"id": 186,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "CTE + Window Function + JOIN",
+"question": "Isolate the highest invoice record noted inside each corporate business segment registry.",
+"sql": "WITH segmented_invoices AS (SELECT c.segment, o.id, o.amount, ROW_NUMBER() OVER(PARTITION BY c.segment ORDER BY o.amount DESC) AS invoice_rank FROM customers c JOIN orders o ON c.id = o.customer_id) SELECT segment, id, amount FROM segmented_invoices WHERE invoice_rank = 1;",
+"explanation": "Applies a window row numbering partition inside a standalone CTE model to pick peak transactions per market tier."
+},
+{
+"id": 187,
+"domain": "Engineering",
+"difficulty": "Hard",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "List departments tracking more than ten blocked work items across open development timelines.",
+"sql": "SELECT d.name, COUNT(j.id) AS blocked_items FROM departments d JOIN employees e ON d.id = e.dept_id JOIN jira_tickets j ON e.id = j.assignee_id WHERE j.is_blocked = true GROUP BY d.id, d.name HAVING COUNT(j.id) > 10;",
+"explanation": "Traces relations across three distinct structural tables to screen organizational hubs by operational bottlenecks."
+},
+{
+"id": 188,
+"domain": "IT",
+"difficulty": "Hard",
+"pattern": "Subquery + JOIN + GROUP BY",
+"question": "Expose the names of staff members holding active VPN endpoints whose sick leave records are fully drained.",
+"sql": "SELECT DISTINCT e.name FROM employees e JOIN assets a ON e.id = a.emp_id WHERE a.type = 'vpn' AND a.status = 'active' AND e.id IN (SELECT emp_id FROM leaves WHERE type = 'sick' AND remaining = 0);",
+"explanation": "Matches hardware assets records to employee directory lines that validate an underlying nested balance subquery."
+},
+{
+"id": 189,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "CASE + JOIN + GROUP BY",
+"question": "Group sales volumes into cyclical quarterly buckets evaluating performance across individual month strings.",
+"sql": "SELECT CASE WHEN month IN ('2026-01', '2026-02', '2026-03') THEN 'Q1' WHEN month IN ('2026-04', '2026-05', '2026-06') THEN 'Q2' ELSE 'Other' END AS cycle_quarter, SUM(amount) AS revenue FROM sales GROUP BY CASE WHEN month IN ('2026-01', '2026-02', '2026-03') THEN 'Q1' WHEN month IN ('2026-04', '2026-05', '2026-06') THEN 'Q2' ELSE 'Other' END;",
+"explanation": "Executes data parsing maps inside group parameters to divide transaction tables into fiscal categories."
+},
+{
+"id": 190,
+"domain": "HR",
+"difficulty": "Hard",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "Which company roles show an internal tracking count of more than five personnel with zero remaining casual leaves?",
+"sql": "SELECT e.role, COUNT(e.id) AS staff_count FROM employees e JOIN leaves l ON e.id = l.emp_id WHERE l.type = 'casual' AND l.remaining = 0 GROUP BY e.role HAVING COUNT(e.id) > 5;",
+"explanation": "Filters the primary employee database across structural time-off parameters to map team exhaustion rates."
+},
+{
+"id": 191,
+"domain": "Engineering",
+"difficulty": "Hard",
+"pattern": "CTE + JOIN + GROUP BY",
+"question": "Find the project title that tracks the single largest cumulative count of blocked tasks or bugs.",
+"sql": "WITH project_blocks AS (SELECT p.id, COUNT(j.id) AS total_blocks FROM projects p JOIN departments d ON p.dept_id = d.id JOIN employees e ON d.id = e.dept_id JOIN jira_tickets j ON e.id = j.assignee_id WHERE j.is_blocked = true GROUP BY p.id) SELECT p.name FROM projects p JOIN project_blocks pb ON p.id = pb.id ORDER BY pb.total_blocks DESC LIMIT 1;",
+"explanation": "Nests multi-table relationship maps into aggregate ranking CTE components to output a top outlier."
+},
+{
+"id": 192,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "Subquery + WHERE",
+"question": "Find all completed orders whose total volume surpasses the highest order amount recorded in the 'SMB' segment.",
+"sql": "SELECT id, customer_id, amount FROM orders WHERE status = 'completed' AND amount > (SELECT MAX(o.amount) FROM orders o JOIN customers c ON o.customer_id = c.id WHERE c.segment = 'SMB');",
+"explanation": "Tests target values against scalar thresholds dynamically resolved via an inner joined maximum subquery."
+},
+{
+"id": 93,
+"domain": "IT",
+"difficulty": "Hard",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "List managers whose direct reporting teams have been assigned more than five active security vpn instances.",
+"sql": "SELECT m.name AS leader, COUNT(a.id) AS vpn_count FROM employees e JOIN employees m ON e.manager_id = m.id JOIN assets a ON e.id = a.emp_id WHERE a.type = 'vpn' AND a.status = 'active' GROUP BY m.id, m.name HAVING COUNT(a.id) > 5;",
+"explanation": "Combines a self-join hierarchy match with peripheral hardware catalogs to audit configuration assignments across teams."
+},
+{
+"id": 194,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "CTE + CASE + JOIN",
+"question": "Evaluate client health flags based on whether their total historical transaction value drops below 1,000.",
+"sql": "WITH client_ledger AS (SELECT customer_id, SUM(amount) AS balance FROM orders GROUP BY customer_id) SELECT c.name, CASE WHEN cl.balance > 10000 THEN 'Premium' WHEN cl.balance BETWEEN 1000 AND 10000 THEN 'Active' ELSE 'At Risk' END AS client_status FROM customers c JOIN client_ledger cl ON c.id = cl.customer_id;",
+"explanation": "Aggregates base values within localized CTE expressions before parsing classifications through case variables."
+},
+{
+"id": 195,
+"domain": "HR",
+"difficulty": "Hard",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "Identify divisions where more than two employees were hired within the last 365 days relative to '2026-01-01'.",
+"sql": "SELECT d.name, COUNT(e.id) AS recent_hires FROM departments d JOIN employees e ON d.id = e.dept_id WHERE e.join_date BETWEEN CAST('2026-01-01' AS DATE) - INTERVAL '1 year' AND '2026-01-01' GROUP BY d.id, d.name HAVING COUNT(e.id) > 2;",
+"explanation": "Evaluates annual onboarding metrics across corporate departments using rolling date boundaries inside HAVING checks."
+},
+{
+"id": 196,
+"domain": "Engineering",
+"difficulty": "Hard",
+"pattern": "Window Function + JOIN + GROUP BY",
+"question": "Determine the dense ranking order of active sprint numbers based on the volume of tracking items inside them.",
+"sql": "SELECT sprint, COUNT(id) AS ticket_load, DENSE_RANK() OVER (ORDER BY COUNT(id) DESC) AS sprint_rank FROM jira_tickets WHERE sprint IS NOT NULL GROUP BY sprint;",
+"explanation": "Executes dense ranking computations directly across grouped sprint counts to gauge delivery cycles."
+},
+{
+"id": 197,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "Subquery + JOIN + WHERE",
+"question": "Find the names of client accounts that have never had a pending order recorded in the system logs.",
+"sql": "SELECT id, name FROM customers WHERE id NOT IN (SELECT DISTINCT customer_id FROM orders WHERE status = 'pending');",
+"explanation": "Applies a subquery tracking execution exclusion parameters via an outer NOT IN logical pattern."
+},
+{
+"id": 198,
+"domain": "IT",
+"difficulty": "Hard",
+"pattern": "JOIN + GROUP BY + HAVING",
+"question": "Identify employee roles where the volume of assigned damaged assets is larger than the count of active items.",
+"sql": "SELECT e.role FROM employees e JOIN assets a ON e.id = a.emp_id GROUP BY e.role HAVING SUM(CASE WHEN a.status = 'damaged' THEN 1 ELSE 0 END) > SUM(CASE WHEN a.status = 'active' THEN 1 ELSE 0 END);",
+"explanation": "Employs conditional sum aggregations to balance equipment stability matrices against employee groups."
+},
+{
+"id": 199,
+"domain": "Engineering",
+"difficulty": "Hard",
+"pattern": "CTE + JOIN + WHERE",
+"question": "Find the corporate email addresses of team members assigned to open bug tickets inside suspended projects.",
+"sql": "WITH dead_zones AS (SELECT id FROM projects WHERE status = 'suspended') SELECT DISTINCT e.email FROM employees e JOIN departments d ON e.dept_id = d.id JOIN projects p ON d.id = p.dept_id JOIN jira_tickets j ON e.id = j.assignee_id WHERE j.type = 'bug' AND j.status != 'Done' AND p.id IN (SELECT id FROM dead_zones);",
+"explanation": "Traces system relational graphs targeting structural communication goals via explicit CTE isolation filters."
+},
+{
+"id": 200,
+"domain": "Analytics",
+"difficulty": "Hard",
+"pattern": "CTE + Window Function + JOIN",
+"question": "Identify who the top performing representative was across the 'Enterprise' customer segment over the month '2026-04'.",
+"sql": "WITH enterprise_reps AS (SELECT e.name, SUM(s.amount) AS revenue, ROW_NUMBER() OVER(ORDER BY SUM(s.amount) DESC) AS sequence FROM sales s JOIN employees e ON s.emp_id = e.id JOIN orders o ON s.order_id = o.id JOIN customers c ON o.customer_id = c.id WHERE c.segment = 'Enterprise' AND s.month = '2026-04' GROUP BY e.id, e.name) SELECT name, revenue FROM enterprise_reps WHERE sequence = 1;",
+"explanation": "Integrates transactional records across four data structures inside a sequence ranking window to return the top record."
+}
+]
